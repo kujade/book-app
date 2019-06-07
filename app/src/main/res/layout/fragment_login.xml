@@ -97,5 +97,5 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineMiddle"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="410dp"/>
+            app:layout_constraintGuide_percent="0.30"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

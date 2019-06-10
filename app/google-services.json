@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "586201053147",
+    "firebase_url": "https://book-app-b1a5c.firebaseio.com",
+    "project_id": "book-app-b1a5c",
+    "storage_bucket": "book-app-b1a5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586201053147:android:1a000fd7bbfa3889",
+        "android_client_info": {
+          "package_name": "com.denisa.bookapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586201053147-3tsk6mqk1h3aq1vgssmdum50ape1aspc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPawkr1-vFVu4GoP508DHhJlG-XX12RGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586201053147-3tsk6mqk1h3aq1vgssmdum50ape1aspc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

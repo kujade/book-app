@@ -10,9 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.mainContent, LoginFragment())
-            .commit()
+        if (supportFragmentManager.fragments.isEmpty())
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.mainContent, LoginFragment())
+                .commit()
     }
 }

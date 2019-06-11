@@ -3,5 +3,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="sing_button">Přihlásit</string>
+    <string name="sign_up">Sign Up</string>
     <string name="welcome">Pro vstup je nutné se přihlásit.</string>
+    <string name="register">Register</string>
+    <string name="sign_in_error_msg">Sign in failed. %1$s</string>
 </resources>

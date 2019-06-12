@@ -7,4 +7,10 @@
     <string name="welcome">Pro vstup je nutné se přihlásit.</string>
     <string name="register">Register</string>
     <string name="sign_in_error_msg">Sign in failed. %1$s</string>
+    <string name="current_user_msg">Current user %1$s</string>
+    <string name="signed_user_msg">Signed in %1$s</string>
+    <string name="sign_fail_msg">Sign in failed</string>
+    <string name="create_fail_msg">Create user failed</string>
+    <string name="empty_password_msg">Password cannot be empty</string>
+    <string name="empty_username_msg">Username cannot be empty</string>
 </resources>

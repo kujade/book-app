@@ -34,7 +34,7 @@ class LoginFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         val currentUser = auth.currentUser
-        Log.i(TAG, "Current user ${currentUser?.displayName}")
+        Log.i(TAG, String.format(getString(R.string.current_user_msg), currentUser?.displayName))
 
         if (currentUser == null) {
             btLogin.text = getString(R.string.register)
@@ -51,10 +51,10 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(editUsername.text.toString().trim(), editPassword.text.toString().trim())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.i(TAG, "Signed in user ${auth.currentUser!!.uid} ${auth.currentUser!!.email}")
+                    Log.i(TAG, String.format(getString(R.string.signed_user_msg),auth.currentUser!!.email))
                     goToDashboard()
                 } else {
-                    Log.i(TAG, "sign in failed")
+                    Log.i(TAG, getString(R.string.sign_fail_msg))
                     showToast(String.format(getString(R.string.sign_in_error_msg), task.exception?.message))
                 }
             }
@@ -74,22 +74,22 @@ class LoginFragment : Fragment() {
         auth.createUserWithEmailAndPassword(editUsername.text.toString().trim(), editPassword.text.toString().trim())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.i(TAG, "Current user ${auth.currentUser!!.uid}")
+                    Log.i(TAG, String.format(getString(R.string.current_user_msg), auth.currentUser!!.uid))
                     goToDashboard()
                 } else {
-                    Log.i(TAG, "create user failed")
-                    showToast("User creation failed. ${task.exception?.message}")
+                    Log.i(TAG, getString(R.string.create_fail_msg))
+                    showToast(String.format(getString(R.string.create_fail_msg),task.exception?.message))
                 }
             }
     }
 
     private fun inputFieldsValidated(): Boolean {
         if (editUsername.text.isNullOrBlank()) {
-            showToast("Username cannot be empty")
+            showToast(getString(R.string.empty_username_msg))
             return true
         }
         if (editPassword.text.isNullOrBlank()) {
-            showToast("Password cannot be empty")
+            showToast(getString(R.string.empty_password_msg))
             return true
         }
         return false

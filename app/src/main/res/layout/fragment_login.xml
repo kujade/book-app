@@ -108,18 +108,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.3"/>
 
-        <TextView
-                android:text="@string/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvChooseType"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/colorSecondary"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintBottom_toTopOf="@+id/guidelineMiddle"
-                app:layout_constraintEnd_toEndOf="@+id/inputUsername"
-                android:layout_marginEnd="8dp"/>
+        
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

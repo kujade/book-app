@@ -28,10 +28,6 @@ class DashboardFragment : Fragment() {
 
 
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onResume() {
         super.onResume()
 
     }

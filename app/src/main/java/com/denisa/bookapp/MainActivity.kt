@@ -16,4 +16,5 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.mainContent, LoginFragment())
                 .commit()
     }
+
 }

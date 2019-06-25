@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denisa.bookapp.MainViewModel
 import com.denisa.bookapp.R
 import com.google.firebase.auth.FirebaseAuth
-
-
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 
 class DashboardFragment : Fragment()  {
@@ -23,19 +23,20 @@ class DashboardFragment : Fragment()  {
 
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(recycler_view) {
+            adapter = BooksAdapter().apply {
+                listOfBooks.add(Book("Hello", "Angelina"))
+                listOfBooks.add(Book(title = "Title2", author = "Denisa"))
+            }
+            layoutManager = LinearLayoutManager(context)
+        }
     }
-
-
-    private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-    }
-
-
-
-
-
 }
 

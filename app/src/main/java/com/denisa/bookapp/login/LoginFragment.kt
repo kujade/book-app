@@ -43,6 +43,8 @@ class LoginFragment : Fragment() {
             btLogin.text = getString(R.string.sing_button)
             btLogin.setOnClickListener { loginUser() }
         }
+
+        goToDashboard()
     }
 
     private fun loginUser() {

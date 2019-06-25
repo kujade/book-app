@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denisa.bookapp.MainViewModel
@@ -19,10 +18,8 @@ class DashboardFragment : Fragment()  {
     private lateinit var auth: FirebaseAuth
 
     val TAG = this::class.java.name
-    val fabButton = (R.id.fab)
 
-
-
+    // todo: create detail fragment in similar way
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
         = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
@@ -36,6 +33,11 @@ class DashboardFragment : Fragment()  {
                 listOfBooks.add(Book(title = "Title2", author = "Denisa"))
             }
             layoutManager = LinearLayoutManager(context)
+            addItemDecoration(BookItemDecorator(context.resources.getDimensionPixelSize(R.dimen.book_item_margin)))
+        }
+
+        fabAddBook.setOnClickListener {
+
         }
     }
 }

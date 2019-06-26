@@ -29,8 +29,10 @@ class DashboardFragment : Fragment()  {
 
         with(recycler_view) {
             adapter = BooksAdapter().apply {
-                listOfBooks.add(Book("Hello", "Angelina"))
-                listOfBooks.add(Book(title = "Title2", author = "Denisa"))
+                //two different ways of possible set up
+                listOfBooks.add(Book("Elantris", "Brandon Sanderson"))
+                listOfBooks.add(Book(title = "Dark Matter", author = "Blake Crouch"))
+                listOfBooks.add(Book(title="Children of Time", author = "Adrien Tchaikovski"))
             }
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(BookItemDecorator(context.resources.getDimensionPixelSize(R.dimen.book_item_margin)))

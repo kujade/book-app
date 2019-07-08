@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denisa.bookapp.MainViewModel
 import com.denisa.bookapp.R
+import com.denisa.bookapp.detail.DetailFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
@@ -39,8 +40,12 @@ class DashboardFragment : Fragment()  {
         }
 
         fabAddBook.setOnClickListener {
-
-        }
+        activity
+            ?.supportFragmentManager
+            ?.beginTransaction()
+            ?.replace(R.id.mainContent, DetailFragment())
+            ?.commit()
     }
+}
 }
 

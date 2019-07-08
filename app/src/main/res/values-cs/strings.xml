@@ -11,4 +11,6 @@
     <string name="create_fail_msg">Vytvoření uživatele selhalo</string>
     <string name="empty_password_msg">Heslo nesmí být prázdné</string>
     <string name="empty_username_msg">Uživatelské jméno nesmí být prázdné</string>
+    <string name="author">Autor</string>
+    <string name="genre">Žánr</string>
 </resources>

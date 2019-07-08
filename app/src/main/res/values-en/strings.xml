@@ -15,4 +15,10 @@
     <string name="genre">Genre</string>
     <string name="create_book_item">Create Book Item</string>
     <string name="dashboard">Dashboard</string>
+    <string name="book_name">Name</string>
+    <string name="create_author">Author</string>
+    <string name="name_book_hint">Write name of the book</string>
+    <string name="create_author_hint">Write author of the book</string>
+    <string name="genre_create_detail">Genre</string>
+    <string name="author_hint">Write author of the book</string>
 </resources>

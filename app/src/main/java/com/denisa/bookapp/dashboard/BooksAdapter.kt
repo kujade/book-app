@@ -3,9 +3,9 @@ package com.denisa.bookapp.dashboard
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.denisa.bookapp.R
+import com.denisa.bookapp.model.Book
 import kotlinx.android.synthetic.main.book_item.view.*
 
 class BooksAdapter: RecyclerView.Adapter<BooksAdapter.BookVH>() {

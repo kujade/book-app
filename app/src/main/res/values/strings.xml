@@ -22,4 +22,11 @@
     <string name="author_hint">Write author of the book</string>
     <string name="genre_create_detail">Genre</string>
     <string name="create_author_hint">Write author of the book</string>
+
+    <string-array name="genres_array">
+        <item>Thriller</item>
+        <item>Scifi</item>
+        <item>Fantasy</item>
+        <item>Autobiography</item>
+    </string-array>
 </resources>

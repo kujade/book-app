@@ -20,16 +20,12 @@ class BooksAdapter: RecyclerView.Adapter<BooksAdapter.BookVH>() {
     override fun onBindViewHolder(holder: BookVH, position: Int) {
         val book = listOfBooks[position]
 
-        holder.title.text = book.title
-        holder.author.text= book.author
-        holder.genre.text=book.genre
-
-
+        with(holder.itemView) {
+            book_title.text = book.title
+            book_author.text = book.author
+            book_genre.text = book.genre
+        }
     }
 
-    class BookVH(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.book_title
-        val author: TextView = view.book_author
-        val genre : TextView = view.book_genre
+        class BookVH(view: View) : RecyclerView.ViewHolder(view)
     }
-}

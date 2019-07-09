@@ -17,7 +17,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="book_name">Jméno</string>
     <string name="create_author">Autor</string>
-    <string name="name_book_hint">Write name of the book</string>
+    <string name="name_book_hint">Zadejte jméno knihy</string>
     <string name="genre_create_detail">Genre</string>
     <string name="author_hint">Zadejte jméno autora</string>
     <string name="create_author_hint">Zadejte jméno autora</string>

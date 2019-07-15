@@ -23,7 +23,6 @@ class DashboardFragment : Fragment() {
 
     val TAG = this::class.java.name
 
-    // todo: create detail fragment in similar way
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_dashboard, container, false)
 

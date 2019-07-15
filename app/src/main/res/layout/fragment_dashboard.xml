@@ -37,6 +37,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp"/>
 
+    <ImageView
+            android:id="@+id/emptyState"
+            android:layout_width="290dp"
+            android:src="@drawable/empty"
+            android:gravity="center"
+            android:layout_height="430dp"
+            app:layout_constraintEnd_toEndOf="@+id/recycler_view"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddBook"
             android:layout_width="wrap_content"

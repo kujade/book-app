@@ -13,6 +13,7 @@ import com.denisa.bookapp.MainViewModel
 import com.denisa.bookapp.R
 import com.denisa.bookapp.Utils
 import com.denisa.bookapp.model.Book
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -38,6 +39,7 @@ class DetailFragment : Fragment() {
             activity?.let { Utils.hideKeyboard(it) }
         }
 
+
     }
 
     private fun removeFragment() {
@@ -47,6 +49,8 @@ class DetailFragment : Fragment() {
             ?.remove(this)
             ?.commit()
     }
+
+
 
     private fun setUpSpinner() {
         val spinnerListener = object : AdapterView.OnItemSelectedListener {

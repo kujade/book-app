@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denisa.bookapp.MainViewModel
 import com.denisa.bookapp.R
 import com.denisa.bookapp.detail.DetailFragment
+import com.denisa.bookapp.model.Book
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 
 
 class DashboardFragment : Fragment() {
@@ -21,7 +23,14 @@ class DashboardFragment : Fragment() {
     lateinit var viewModel: MainViewModel
     private lateinit var auth: FirebaseAuth
 
+
     val TAG = this::class.java.name
+
+
+
+
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_dashboard, container, false)
@@ -30,6 +39,13 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
+
+
+
+        val list = viewModel.listOfBooksLiveData.value
+
+
+
 
         Log.i("Denisa", "On view created")
         with(recycler_view) {
@@ -45,18 +61,60 @@ class DashboardFragment : Fragment() {
                 ?.add(R.id.mainContent, DetailFragment())
                 ?.addToBackStack(null)
                 ?.commit()
+
+
         }
 
+
+
         viewModel.listOfBooksLiveData.observe(this, Observer { books ->
+
+
+
+
+
             with((recycler_view.adapter as BooksAdapter).listOfBooks) {
                 clear()
                 addAll(books)
                 Log.i("Denisa", "live data observer called")
                 recycler_view.adapter?.notifyDataSetChanged()
+
+
+
             }
+
+
+            if (list?.isNotEmpty()!!) {
+               emptyState.visibility = View.GONE
+
+            }else{
+                emptyState.visibility = View.VISIBLE
+
+
+            }
+
+
+
+
+
         })
-    }
+
+
+
+
+
+
+        //emptyState.visibility = View.GONE
+
+
+
+   }
+
+
+
 }
+
+
 
 //TODO:
 // 1) add empty list image (svg) and hide it when recyclerview has values

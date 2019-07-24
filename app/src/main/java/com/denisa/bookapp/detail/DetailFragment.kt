@@ -28,18 +28,42 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
         setUpSpinner()
-        create_button.setOnClickListener {
-            val newBook = Book(
-                title = edit_name.text.toString(),
-                author = edit_author.text.toString(),
-                genre = spinner_genre.selectedItem.toString()
-            )
-            viewModel.addBook(newBook)
-            removeFragment()
-            activity?.let { Utils.hideKeyboard(it) }
+        create_button.setOnClickListener { saveBook() }
+        viewModel.selectedBook?.let {
+            edit_name.setText(it.title)
+            edit_author.setText(it.author)
+            val position = (spinner_genre.adapter as ArrayAdapter<String>).getPosition(it.genre)
+            spinner_genre.setSelection(position)
         }
+    }
 
+    private fun saveBook() {
+        if (viewModel.selectedBook == null){
+            addNewBook()
+        }else{
+            saveExistingBook()
+        }
+        removeFragment()
+        activity?.let { Utils.hideKeyboard(it) }
+    }
 
+    private fun saveExistingBook() {
+        // TODO: In VM
+        /**
+         * 1. find existing book by id
+         * 2. save it in array list = KOtlin Collections (delete book and save new, same position)
+         * 3. update livedata
+         */
+    }
+
+    private fun addNewBook() {
+        val newBook = Book(
+            id = viewModel.getNextId(),
+            title = edit_name.text.toString(),
+            author = edit_author.text.toString(),
+            genre = spinner_genre.selectedItem.toString()
+        )
+        viewModel.addBook(newBook)
     }
 
     private fun removeFragment() {
@@ -48,9 +72,8 @@ class DetailFragment : Fragment() {
             ?.beginTransaction()
             ?.remove(this)
             ?.commit()
+        viewModel.selectedBook = null
     }
-
-
 
     private fun setUpSpinner() {
         val spinnerListener = object : AdapterView.OnItemSelectedListener {
@@ -61,7 +84,6 @@ class DetailFragment : Fragment() {
                 val selectedGenre = parent?.getItemAtPosition(position)
                 Log.i("Denisa", selectedGenre.toString())
             }
-
         }
 
         context?.let {
@@ -76,7 +98,6 @@ class DetailFragment : Fragment() {
                 spinner_genre.adapter = adapter
             }
         }
-
         spinner_genre.onItemSelectedListener = spinnerListener
     }
 }

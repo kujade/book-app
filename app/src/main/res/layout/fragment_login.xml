@@ -17,7 +17,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="24dp"
-                android:id="@+id/dashb_frag_header"
+                android:id="@+id/tvDashboardHeader"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineMiddle"
                 app:layout_constraintVertical_bias="0.429"
@@ -32,7 +32,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineMiddle"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/dashb_frag_header"
+                app:layout_constraintTop_toBottomOf="@+id/tvDashboardHeader"
                 android:textSize="24sp"
                 app:layout_constraintHorizontal_bias="0.448"
                 app:layout_constraintVertical_bias="0.645"/>

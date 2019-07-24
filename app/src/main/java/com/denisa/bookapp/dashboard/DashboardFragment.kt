@@ -15,7 +15,6 @@ import com.denisa.bookapp.detail.DetailFragment
 import com.denisa.bookapp.model.Book
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 
 
 class DashboardFragment : Fragment() {
@@ -23,97 +22,57 @@ class DashboardFragment : Fragment() {
     lateinit var viewModel: MainViewModel
     private lateinit var auth: FirebaseAuth
 
-
     val TAG = this::class.java.name
-
-
-
-
-
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
-
-
-
-        val list = viewModel.listOfBooksLiveData.value
-
-
-
-
         Log.i("Denisa", "On view created")
         with(recycler_view) {
-            adapter = BooksAdapter()
+            adapter = BooksAdapter(object : OnBookClickedCallback {
+                override fun onBookClicked(book: Book) {
+                    openDetailFragment()
+                    viewModel.selectedBook = book
+                }
+            })
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(BookItemDecorator(context.resources.getDimensionPixelSize(R.dimen.book_item_margin)))
         }
 
-        fabAddBook.setOnClickListener {
-            activity
-                ?.supportFragmentManager
-                ?.beginTransaction()
-                ?.add(R.id.mainContent, DetailFragment())
-                ?.addToBackStack(null)
-                ?.commit()
-
-
-        }
-
-
+        fabAddBook.setOnClickListener { openDetailFragment() }
 
         viewModel.listOfBooksLiveData.observe(this, Observer { books ->
-
-
-
-
-
-            with((recycler_view.adapter as BooksAdapter).listOfBooks) {
-                clear()
-                addAll(books)
-                Log.i("Denisa", "live data observer called")
-                recycler_view.adapter?.notifyDataSetChanged()
-
-
-
+            if (books.isNotEmpty()) {
+                showContent(true)
+                with(recycler_view.adapter as BooksAdapter) {
+                    listOfBooks.clear()
+                    listOfBooks.addAll(books)
+                    Log.i("Denisa", "live data observer called")
+                    notifyDataSetChanged()
+                }
+            } else {
+                showContent(false)
             }
-
-
-            if (list?.isNotEmpty()!!) {
-               emptyState.visibility = View.GONE
-
-            }else{
-                emptyState.visibility = View.VISIBLE
-
-
-            }
-
-
-
-
-
         })
+    }
 
+    private fun openDetailFragment() {
+        activity
+            ?.supportFragmentManager
+            ?.beginTransaction()
+            ?.add(R.id.mainContent, DetailFragment())
+            ?.addToBackStack(null)
+            ?.commit()
+    }
 
-
-
-
-
-        //emptyState.visibility = View.GONE
-
-
-
-   }
-
-
-
+    private fun showContent(isContentVisible: Boolean) {
+        ivEmptyState.visibility = if (isContentVisible) View.GONE else View.VISIBLE
+        recycler_view.visibility = if (isContentVisible) View.VISIBLE else View.GONE
+    }
 }
-
 
 
 //TODO:

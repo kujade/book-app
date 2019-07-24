@@ -8,7 +8,7 @@ import com.denisa.bookapp.R
 import com.denisa.bookapp.model.Book
 import kotlinx.android.synthetic.main.book_item.view.*
 
-class BooksAdapter: RecyclerView.Adapter<BooksAdapter.BookVH>() {
+class BooksAdapter(val callback: OnBookClickedCallback) : RecyclerView.Adapter<BooksAdapter.BookVH>() {
 
     val listOfBooks = arrayListOf<Book>()
 
@@ -24,8 +24,13 @@ class BooksAdapter: RecyclerView.Adapter<BooksAdapter.BookVH>() {
             book_title.text = book.title
             book_author.text = book.author
             book_genre.text = book.genre
+            setOnClickListener { callback.onBookClicked(book) }
         }
     }
 
-        class BookVH(view: View) : RecyclerView.ViewHolder(view)
-    }
+    class BookVH(view: View) : RecyclerView.ViewHolder(view)
+}
+
+interface OnBookClickedCallback {
+    fun onBookClicked(book: Book)
+}
